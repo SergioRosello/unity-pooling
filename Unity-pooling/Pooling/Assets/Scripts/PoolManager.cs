@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PoolManager : Singleton<PoolManager> {
 	private Dictionary<string, List<GameObject>> pool;
@@ -23,11 +25,21 @@ public class PoolManager : Singleton<PoolManager> {
 	public static GameObject Spawn(GameObject prefab) {
 		return Instance.SpawnInternal (prefab);
 	}
+//Añadir método para spawnear un prefab en una posición concreta
 	public static GameObject Spawn(GameObject prefab, Vector3 coordinates) {
 		var instance = Instance.SpawnInternal (prefab);
 		instance.transform.position = coordinates;
 		return instance;
 	}
+//Añadir un método que nos diga cuántas instancias de un prefab tenemos disponibles en el pool
+public int getInstancesForPrefab(string prefab){
+		if(pool.ContainsKey(prefab))
+			return pool[prefab].Count;
+		else return -1;
+}
+//Añadir método que nos devuelva la lista de todas las instancias disponibles de un prefab
+//Añadir métodos que nos permitan spawnear objetos por nombre
+	
 	private void LoadInternal(GameObject prefab, int quantity=1) {
 		var goName = prefab.name;
 

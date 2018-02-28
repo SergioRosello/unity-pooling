@@ -5,16 +5,21 @@ using UnityEngine.UI;
 
 public class PerformanceMonitor : MonoBehaviour {
 	private Text text;
+	private PoolManager poolManager;
 	private float worstFrameTime;
 	private int frameCount;
 
 	// Use this for initialization
 	void Awake () {
-		text = GetComponent<Text> ();
+		text = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		printFPS();
+	}
+
+	void printFPS(){
 		frameCount++;
 
 		if (frameCount > 10) {
@@ -25,5 +30,6 @@ public class PerformanceMonitor : MonoBehaviour {
 		}
 
 		text.text = "Worst: " + worstFrameTime + "\nAverage: " + Time.timeSinceLevelLoad/frameCount;
+
 	}
 }

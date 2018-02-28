@@ -176,6 +176,7 @@
 -define:ENABLE_NATIVE_ARRAY_CHECKS
 -define:UNITY_TEAM_LICENSE
 'Assets/GUIManager.cs'
+'Assets/PoolInfoPrinter.cs'
 'Assets/Scripts/Cube.cs'
 'Assets/Scripts/CubePooling.cs'
 'Assets/Scripts/DaggerNoPooling.cs'
