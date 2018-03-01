@@ -14,8 +14,8 @@ public class PoolInfoPrinter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(PoolManager.Instance.getInstancesForPrefab(prefabName) != -1)
-			text.text = prefabName + " Has: " + PoolManager.Instance.getInstancesForPrefab(prefabName).ToString() + " Instances.";
+		if(PoolManager.Instance.getNumberOfInstancesOfPrefab(prefabName) != -1)
+			text.text = prefabName + " Has: " + PoolManager.Instance.getNumberOfInstancesOfPrefab(prefabName).ToString() + " Instances.";
 		else{
 			text.text = "none";
 		}

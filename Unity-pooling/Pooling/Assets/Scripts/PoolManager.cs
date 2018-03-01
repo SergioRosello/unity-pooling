@@ -32,14 +32,32 @@ public class PoolManager : Singleton<PoolManager> {
 		return instance;
 	}
 //Añadir un método que nos diga cuántas instancias de un prefab tenemos disponibles en el pool
-public int getInstancesForPrefab(string prefab){
+public int getNumberOfInstancesOfPrefab(string prefab){
 		if(pool.ContainsKey(prefab))
 			return pool[prefab].Count;
 		else return -1;
 }
 //Añadir método que nos devuelva la lista de todas las instancias disponibles de un prefab
+public List<GameObject> getInstancesOfPrefab(string prefab){
+		if(pool.ContainsKey(prefab)){
+			return pool[prefab];
+		}
+		else return null;
+}
 //Añadir métodos que nos permitan spawnear objetos por nombre
-	
+	private GameObject SpawnInternal(string prefabName){
+		if (!pool.ContainsKey(prefabName) || pool[prefabName].Count == 0) {
+			Debug.LogWarning ("Requested item " + prefabName + " but it's pool was empty");
+			//Load (, 1);            // Me falta hacer esto ;)
+		}
+
+		var l = pool [prefabName];
+		var go = l [0];
+		l.RemoveAt (0);
+		go.SetActive (true);
+		go.transform.SetParent (null);
+		return go;
+	}
 	private void LoadInternal(GameObject prefab, int quantity=1) {
 		var goName = prefab.name;
 
