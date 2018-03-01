@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PoolManager : Singleton<PoolManager> {
 	private Dictionary<string, List<GameObject>> pool;
 	private Transform poolParent;
+	public List<GameObject> prefabs;
 
 	// Use this for initialization
 	void Awake () {
@@ -23,6 +24,9 @@ public class PoolManager : Singleton<PoolManager> {
 	}
 
 	public static GameObject Spawn(GameObject prefab) {
+		return Instance.SpawnInternal (prefab);
+	}
+	public static GameObject Spawn(string prefab) {
 		return Instance.SpawnInternal (prefab);
 	}
 //Añadir método para spawnear un prefab en una posición concreta
@@ -46,9 +50,17 @@ public List<GameObject> getInstancesOfPrefab(string prefab){
 }
 //Añadir métodos que nos permitan spawnear objetos por nombre
 	private GameObject SpawnInternal(string prefabName){
-		if (!pool.ContainsKey(prefabName) || pool[prefabName].Count == 0) {
+		GameObject prefabMatched = null;
+
+		foreach(GameObject prefb in prefabs) {
+			if(prefb.name == prefabName) {
+				prefabMatched = prefb;
+			}
+		}
+
+		if (!prefabMatched || pool[prefabName].Count == 0) {
 			Debug.LogWarning ("Requested item " + prefabName + " but it's pool was empty");
-			//Load (, 1);            // Me falta hacer esto ;)
+			Load (prefabMatched, 1);
 		}
 
 		var l = pool [prefabName];
