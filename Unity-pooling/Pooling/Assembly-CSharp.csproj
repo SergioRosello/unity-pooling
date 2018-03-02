@@ -51,14 +51,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\GUIManager.cs" />
-     <Compile Include="Assets\PoolInfoPrinter.cs" />
      <Compile Include="Assets\Scripts\Cube.cs" />
      <Compile Include="Assets\Scripts\CubePooling.cs" />
      <Compile Include="Assets\Scripts\DaggerNoPooling.cs" />
      <Compile Include="Assets\Scripts\DaggerPooling.cs" />
+     <Compile Include="Assets\Scripts\GUIManager.cs" />
      <Compile Include="Assets\Scripts\MainMenuManager.cs" />
      <Compile Include="Assets\Scripts\PerformanceMonitor.cs" />
+     <Compile Include="Assets\Scripts\PoolInfoPrinter.cs" />
      <Compile Include="Assets\Scripts\PoolManager.cs" />
      <Compile Include="Assets\Scripts\Singleton.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />

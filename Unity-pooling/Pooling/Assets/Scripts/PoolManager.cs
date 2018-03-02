@@ -50,15 +50,16 @@ public List<GameObject> getInstancesOfPrefab(string prefab){
 }
 //Añadir métodos que nos permitan spawnear objetos por nombre
 	private GameObject SpawnInternal(string prefabName){
-		GameObject prefabMatched = null;
 
-		foreach(GameObject prefb in prefabs) {
-			if(prefb.name == prefabName) {
-				prefabMatched = prefb;
+		if (!pool.ContainsKey(prefabName) || pool[prefabName].Count == 0) {
+			GameObject prefabMatched = null;
+
+			foreach(GameObject prefb in prefabs) {
+				if(prefb.name == prefabName) {
+					prefabMatched = prefb;
+				}
 			}
-		}
-
-		if (!prefabMatched || pool[prefabName].Count == 0) {
+			
 			Debug.LogWarning ("Requested item " + prefabName + " but it's pool was empty");
 			Load (prefabMatched, 1);
 		}

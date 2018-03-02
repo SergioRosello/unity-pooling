@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65244035d63240eeb4d6a684fb89b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabName: Cube Pooling
+  prefabName: DaggerPooling
 --- !u!1 &1133952947
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class SpawnerPooling : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		for (int i = 0; i < objectsPerFrame; i++) {
-			var go = PoolManager.Spawn (prefabs [Random.Range (0, prefabs.Length)]);
+			var go = PoolManager.Spawn ("DaggerPooling"/*prefabs [Random.Range (0, prefabs.Length)]*/);
 			go.transform.position = transform.position + Vector3.up * .6f;
 			spawnedObjects.Add (go);
 		}
